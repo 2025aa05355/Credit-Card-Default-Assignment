@@ -43,6 +43,20 @@ if upload_file is not None:
     try:
         # Load User Data
         data = pd.read_csv(upload_file)
+
+        # --- FIX FOR "X1, X2" ERROR ---
+        # Check if the first column is something like "X1" or "Unnamed"
+        # If so, reload using the next row as the header
+        first_col = data.columns[0]
+        if "X1" in str(first_col) or "Unnamed" in str(first_col):
+             # Reload with header=1 (skipping the first row)
+             upload_file.seek(0) # Reset file pointer
+             data = pd.read_csv(upload_file, header=1)
+        # ------------------------------
+
+        # Display Data Preview
+        st.subheader("Data Preview")
+        st.dataframe(data.head())
         
         # Display Data Preview
         st.subheader("Data Preview")
