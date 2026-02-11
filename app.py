@@ -36,7 +36,36 @@ def load_prediction_tools(model_name):
         return None, None
 
 # --- MAIN APP FUNCTIONALITY ---
-# [cite: 91] Dataset upload option
+
+# ==========================================
+# NEW CODE: DOWNLOAD SAMPLE DATA SECTION
+# ==========================================
+st.subheader("Step 1: Get Test Data")
+st.write("Don't have the dataset? Download a sample file below to test the app.")
+
+try:
+    # Attempt to read the file from the GitHub repository root
+    # Make sure 'default_of_credit_card_clients.csv' is uploaded to GitHub!
+    sample_data = pd.read_csv("default_of_credit_card_clients.csv")
+    
+    # Convert to CSV for download button
+    csv_data = sample_data.to_csv(index=False).encode('utf-8')
+
+    st.download_button(
+        label="📥 Download Sample CSV",
+        data=csv_data,
+        file_name="sample_credit_data.csv",
+        mime="text/csv",
+    )
+except FileNotFoundError:
+    st.warning("⚠️ Sample file not found. Please upload 'default_of_credit_card_clients.csv' to your GitHub repository.")
+
+st.divider() # Adds a nice visual line separator
+
+# ==========================================
+# EXISTING CODE: FILE UPLOADER
+# ==========================================
+st.subheader("Step 2: Upload Data")
 upload_file = st.file_uploader("Upload CSV File (Test Data)", type=["csv"])
 
 if upload_file is not None:
@@ -46,7 +75,6 @@ if upload_file is not None:
 
         # --- FIX FOR "X1, X2" ERROR ---
         # Check if the first column is something like "X1" or "Unnamed"
-        # If so, reload using the next row as the header
         first_col = data.columns[0]
         if "X1" in str(first_col) or "Unnamed" in str(first_col):
              # Reload with header=1 (skipping the first row)
@@ -54,10 +82,6 @@ if upload_file is not None:
              data = pd.read_csv(upload_file, header=1)
         # ------------------------------
 
-        # Display Data Preview
-        st.subheader("Data Preview")
-        st.dataframe(data.head())
-        
         # Display Data Preview
         st.subheader("Data Preview")
         st.dataframe(data.head())
@@ -99,7 +123,7 @@ if upload_file is not None:
             st.subheader(f"Predictions using {selected_model}")
             st.write(results_df.head())
             
-            # --- EVALUATION METRICS [cite: 93, 94] ---
+            # --- EVALUATION METRICS ---
             if has_ground_truth:
                 st.divider()
                 st.header("Model Performance Evaluation")
