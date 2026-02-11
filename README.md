@@ -32,4 +32,4 @@ Evaluation metrics obtained from BITS Virtual Lab execution:
 | **kNN** | Performance was average; computation was slow during prediction due to the large dataset size. |
 | **Naive Bayes** | Yielded the lowest performance, likely because the features (payment history) are not truly independent. |
 | **Random Forest** | One of the best performers; effectively handled non-linearity and reduced overfitting via bagging. |
-| **XGBoost** | Achieved the highest AUC and Accuracy, proving efficient at handling the imbalance in default classes. |
+| **XGBoost** | Achieved the highest AUC score and competitive accuracy, proving efficient at handling the imbalance in default classes. |
