@@ -80,10 +80,6 @@ if upload_file is not None:
         # Display Data Preview
         st.subheader("Data Preview")
         st.dataframe(data.head())
-        
-        # Display Data Preview
-        st.subheader("Data Preview")
-        st.dataframe(data.head())
 
         # Preprocessing: Handle ID column if present
         if 'ID' in data.columns:
