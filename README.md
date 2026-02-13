@@ -15,10 +15,10 @@ Evaluation metrics obtained from BITS Virtual Lab execution:
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |---|---|---|---|---|---|---|
 | Logistic Regression | 0.8097 | 0.7270 | 0.6913 | 0.2353 | 0.3511 | 0.3242 |
-| Decision Tree | 0.8108 | 0.7357 | 0.6206 | 0.3488 | 0.4466 | 0.3639 |
-| kNN | 0.7952 | 0.7080 | 0.5493 | 0.3564 | 0.4323 | 0.3252 |
+| Decision Tree | 0.8120 | 0.7386 | 0.6259 | 0.3503 | 0.4492 | 0.3678 |
+| kNN | 0.7950 | 0.7080 | 0.5487 | 0.3564 | 0.4321 | 0.3247 |
 | Naive Bayes | 0.7070 | 0.7371 | 0.3967 | 0.6504 | 0.4928 | 0.3218 |
-| Random Forest (Ensemble) | 0.8213 | 0.7733 | 0.6754 | 0.3534 | 0.4640 | 0.3971 |
+| Random Forest (Ensemble) | 0.8193 | 0.7723 | 0.6638 | 0.3534 | 0.4612 | 0.3908 |
 | XGBoost (Ensemble) | 0.8183 | 0.7826 | 0.6538 | 0.3610 | 0.4652| 0.3900 |
 
 *(Note: Please fill the XXXX with your actual results from the Python script)*
